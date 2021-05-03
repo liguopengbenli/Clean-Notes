@@ -7,7 +7,6 @@ Android example with Clean Architecture by layer.
 
 After this course I will make another course on Dynamic Feature Modules.
 
-# Credits
 1. https://proandroiddev.com/gradle-dependency-management-with-kotlin-94eed4df9a28
 2. https://proandroiddev.com/intro-to-app-modularization-42411e4c421e
 3. https://www.droidcon.com/media-detail?video=380845032
