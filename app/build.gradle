@@ -48,11 +48,21 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-
     // Kotlin
     implementation Dependencies.kotlin_standard_library
     implementation Dependencies.kotlin_reflect
     implementation Dependencies.ktx
+
+    // dependency
+    implementation Dependencies.dagger
+    implementation Dependencies.firebase_firestore
+    implementation Dependencies.firebase_auth
+    implementation Dependencies.firebase_analytics
+    implementation Dependencies.firebase_crashlytics
+    implementation project(path: ':')
+
+    // Annotation Processiong
+    kapt AnnotationProcessing.dagger_compiler
 
     // Support
     implementation SupportDependencies.appcompat
