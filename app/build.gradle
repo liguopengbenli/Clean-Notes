@@ -1,10 +1,11 @@
 import AnnotationProcessing
-import dependencies.AndroidTestDependencies
-import dependencies.Dependencies
 import Application
 import Versions
 import Java
+
 import dependencies.SupportDependencies
+import dependencies.AndroidTestDependencies
+import dependencies.Dependencies
 
 apply plugin: 'com.android.application'
 
@@ -52,6 +53,8 @@ dependencies {
     implementation Dependencies.kotlin_standard_library
     implementation Dependencies.kotlin_reflect
     implementation Dependencies.ktx
+    implementation Dependencies.kotlin_coroutines
+    implementation Dependencies.kotlin_coroutines_android
 
     // dependency
     implementation Dependencies.dagger
@@ -62,6 +65,14 @@ dependencies {
     implementation Dependencies.kotlin_coroutines
     implementation Dependencies.kotlin_coroutines_android
     implementation Dependencies.kotlin_coroutines_play_services
+    implementation project(path: ':')
+    implementation project(path: ':')
+    implementation project(path: ':')
+    implementation project(path: ':')
+    implementation project(path: ':')
+    implementation project(path: ':')
+    implementation project(path: ':')
+    implementation project(path: ':')
     implementation project(path: ':')
     implementation project(path: ':')
     implementation project(path: ':')
