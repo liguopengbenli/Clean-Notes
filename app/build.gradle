@@ -55,6 +55,7 @@ dependencies {
     implementation Dependencies.ktx
     implementation Dependencies.kotlin_coroutines
     implementation Dependencies.kotlin_coroutines_android
+    implementation Dependencies.kotlin_coroutines_play_services
 
     // dependency
     implementation Dependencies.dagger
@@ -62,23 +63,10 @@ dependencies {
     implementation Dependencies.firebase_auth
     implementation Dependencies.firebase_analytics
     implementation Dependencies.firebase_crashlytics
-    implementation Dependencies.kotlin_coroutines
-    implementation Dependencies.kotlin_coroutines_android
-    implementation Dependencies.kotlin_coroutines_play_services
+    implementation Dependencies.retrofit
+    implementation Dependencies.retrofit_gson
     implementation project(path: ':')
-    implementation project(path: ':')
-    implementation project(path: ':')
-    implementation project(path: ':')
-    implementation project(path: ':')
-    implementation project(path: ':')
-    implementation project(path: ':')
-    implementation project(path: ':')
-    implementation project(path: ':')
-    implementation project(path: ':')
-    implementation project(path: ':')
-    implementation project(path: ':')
-    implementation project(path: ':')
-    implementation project(path: ':')
+
 
     // Annotation Processiong
     kapt AnnotationProcessing.dagger_compiler
