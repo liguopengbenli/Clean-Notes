@@ -149,6 +149,4 @@ class InsertNewNoteTest {
 
     }
 
-
-
     }

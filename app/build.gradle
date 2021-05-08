@@ -77,7 +77,6 @@ dependencies {
     implementation Dependencies.firebase_crashlytics
     implementation Dependencies.retrofit
     implementation Dependencies.retrofit_gson
-    implementation project(path: ':')
 
 
     // Annotation Processiong
