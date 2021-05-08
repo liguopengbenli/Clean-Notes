@@ -2,10 +2,13 @@ import AnnotationProcessing
 import Application
 import Versions
 import Java
+import Build
+import Repositories
 
 import dependencies.SupportDependencies
 import dependencies.AndroidTestDependencies
 import dependencies.Dependencies
+import dependencies.TestDependencies
 
 apply plugin: 'com.android.application'
 
@@ -14,6 +17,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
+
 
 
 android {
@@ -37,12 +41,20 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = Java.java_version
-        targetCompatibility = Java.java_version
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
         jvmTarget = Java.java_version
+    }
+
+
+
+    testOptions{
+        unitTests.all {
+            useJUnitPlatform()
+        }
     }
 }
 
@@ -76,4 +88,11 @@ dependencies {
     implementation SupportDependencies.constraintlayout
     implementation SupportDependencies.material_design
     implementation SupportDependencies.swipe_refresh_layout
+
+    // Unit Test
+    testImplementation TestDependencies.mockk
+    testImplementation TestDependencies.jupiter_api
+    testImplementation TestDependencies.jupiter_params
+    testImplementation TestDependencies.junit4
+    testRuntimeOnly TestDependencies.jupiter_engine
 }

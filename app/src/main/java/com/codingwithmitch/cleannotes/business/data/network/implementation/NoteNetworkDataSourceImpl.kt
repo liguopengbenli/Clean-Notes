@@ -23,7 +23,7 @@ constructor(
 
     override suspend fun deleteDeletedNote(note: Note )= firestoreService.deleteDeletedNote(note)
 
-    override suspend fun getDeletedNote(): List<Note> = firestoreService.getDeletedNote()
+    override suspend fun getDeletedNotes(): List<Note> = firestoreService.getDeletedNote()
 
     override suspend fun deleteAllNotes() = firestoreService.deleteAllNotes()
 
