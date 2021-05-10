@@ -1,9 +1,11 @@
 package com.codingwithmitch.cleannotes.di
 
+import com.codingwithmitch.cleannotes.business.data.NoteDataFactory
 import com.codingwithmitch.cleannotes.business.data.cache.FakeNoteCacheDataSourceImpl
 import com.codingwithmitch.cleannotes.business.data.cache.abstraction.NoteCacheDataSource
 import com.codingwithmitch.cleannotes.business.data.network.FakeNoteNetworkDataSourceImpl
 import com.codingwithmitch.cleannotes.business.data.network.abstraction.NoteNetworkDataSource
+import com.codingwithmitch.cleannotes.business.domain.model.Note
 import com.codingwithmitch.cleannotes.business.domain.model.NoteFactory
 import com.codingwithmitch.cleannotes.business.domain.util.DateUtil
 import com.codingwithmitch.cleannotes.util.isUnitTest
@@ -18,19 +20,29 @@ class DependencyContainer {
     lateinit var noteNetworkDataSource: NoteNetworkDataSource
     lateinit var noteCacheDataSource: NoteCacheDataSource
     lateinit var noteFactory: NoteFactory
+    lateinit var noteDataFactory: NoteDataFactory
 
     init {
         isUnitTest = true // for Logger.kt
     }
+    private var notesData: HashMap<String, Note> = HashMap()
+
 
     fun build() {
+        this.javaClass.classLoader?.let { classLoader ->
+            noteDataFactory = NoteDataFactory(classLoader)
+            notesData = noteDataFactory.produceHashMapOfNotes(
+                noteDataFactory.produceListOfNotes()
+            )
+        }
+
         noteFactory = NoteFactory(dateUtil)
         noteNetworkDataSource = FakeNoteNetworkDataSourceImpl(
-            notesData = HashMap(),
+            notesData = notesData,
             deletedNotesData = HashMap()
         )
         noteCacheDataSource = FakeNoteCacheDataSourceImpl(
-            notesData = HashMap(),
+            notesData = notesData,
             dateUtil = dateUtil
         )
     }
