@@ -7,7 +7,6 @@ import com.codingwithmitch.cleannotes.business.data.util.safeApiCall
 import com.codingwithmitch.cleannotes.business.data.util.safeCacheCall
 import com.codingwithmitch.cleannotes.business.domain.model.Note
 import com.codingwithmitch.cleannotes.business.domain.state.*
-import com.codingwithmitch.cleannotes.framework.presentation.notelist.state.NoteListViewState
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -57,7 +56,7 @@ class DeleteNote<ViewState>(
 
         emit(response)
         updateNetwork(
-            message = response?.stateMessage?.response.message,
+            message = response?.stateMessage?.response?.message,
             note = note
         )
     }
