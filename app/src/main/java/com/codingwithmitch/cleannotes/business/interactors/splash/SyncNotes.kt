@@ -27,8 +27,8 @@ import kotlinx.coroutines.withContext
 
 class SyncNotes(
     private val noteCacheDataSource: NoteCacheDataSource,
-    private val noteNetworkDataSource: NoteNetworkDataSource,
-    private val dateUtil: DateUtil
+    private val noteNetworkDataSource: NoteNetworkDataSource
+    //private val dateUtil: DateUtil
 ) {
     suspend fun syncNotes(){
         val cachedNotesList = getCachedNotes()
