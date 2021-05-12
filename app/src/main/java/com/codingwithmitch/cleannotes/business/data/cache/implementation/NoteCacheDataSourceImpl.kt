@@ -45,6 +45,10 @@ constructor(
         return noteDaoService.getNumNotes()
     }
 
+    override suspend fun getAllNotes(): List<Note> {
+        return noteDaoService.getAllNotes()
+    }
+
     override suspend fun insertNotes(notes: List<Note>): LongArray{
         return noteDaoService.insertNotes(notes)
     }

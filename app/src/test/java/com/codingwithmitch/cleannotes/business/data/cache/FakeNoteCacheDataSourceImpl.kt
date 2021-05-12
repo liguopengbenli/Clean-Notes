@@ -102,6 +102,10 @@ constructor(
         return notesData.size
     }
 
+    override suspend fun getAllNotes(): List<Note> {
+        return ArrayList(notesData.values)
+    }
+
     override suspend fun insertNotes(notes: List<Note>): LongArray {
         val results = LongArray(notes.size)
         for ((index, note) in notes.withIndex()) {

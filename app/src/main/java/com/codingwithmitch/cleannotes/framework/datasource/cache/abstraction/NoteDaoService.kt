@@ -12,6 +12,7 @@ interface NoteDaoService {
     suspend fun searchNoteById(primaryKey: String): Note?
     suspend fun getNumNotes(): Int
     suspend fun insertNotes(notes: List<Note>): LongArray
+    suspend fun getAllNotes(): List<Note>
 
     suspend fun searchNotesOrderByDateDESC(
         query: String,

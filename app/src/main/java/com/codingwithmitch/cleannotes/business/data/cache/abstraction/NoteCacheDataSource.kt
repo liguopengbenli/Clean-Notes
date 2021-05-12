@@ -15,6 +15,6 @@ interface NoteCacheDataSource {
 
     suspend fun searchNoteById(primaryKey: String): Note?
     suspend fun getNumNotes(): Int
-
+    suspend fun getAllNotes(): List<Note>
     suspend fun insertNotes(notes: List<Note>): LongArray
 }

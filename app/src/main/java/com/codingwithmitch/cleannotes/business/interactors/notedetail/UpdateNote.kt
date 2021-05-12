@@ -78,6 +78,5 @@ class UpdateNote(
         val UPDATE_NOTE_SUCCESS = "Successfully updated note."
         val UPDATE_NOTE_FAILED = "Failed to update note."
         val UPDATE_NOTE_FAILED_PK = "Update failed. Note is missing primary key."
-
     }
 }
