@@ -8,6 +8,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 import com.codingwithmitch.cleannotes.business.domain.model.Note
 import com.codingwithmitch.cleannotes.framework.datasource.network.model.NoteNetworkEntity
+import com.codingwithmitch.cleannotes.util.cLog
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.*
 import kotlinx.coroutines.tasks.await
@@ -39,7 +40,11 @@ constructor(
             .collection(NOTES_COLLECTION)
             .document(entity.id)
             .set(entity)
-            .await()
+            .addOnFailureListener {
+                // send error reports to Firebase Crashlytics
+                cLog(it.message)
+            }
+            .await() //use koroutine in firestore
     }
 
     override suspend fun deleteNote(primaryKey: String) {
@@ -49,6 +54,10 @@ constructor(
             .collection(NOTES_COLLECTION)
             .document(primaryKey)
             .delete()
+            .addOnFailureListener {
+                // send error reports to Firebase Crashlytics
+                cLog(it.message)
+            }
             .await()
     }
 
@@ -60,6 +69,10 @@ constructor(
             .collection(NOTES_COLLECTION)
             .document(entity.id)
             .set(entity)
+            .addOnFailureListener {
+                // send error reports to Firebase Crashlytics
+                cLog(it.message)
+            }
             .await()
     }
 
@@ -78,7 +91,12 @@ constructor(
                 val documentRef = collectionRef.document(note.id)
                 batch.set(documentRef, networkMapper.mapToEntity(note))
             }
-        }.await()
+        }
+            .addOnFailureListener {
+                // send error reports to Firebase Crashlytics
+                cLog(it.message)
+            }
+            .await()
     }
 
     override suspend fun deleteDeletedNote(note: Note) {
@@ -89,6 +107,10 @@ constructor(
             .collection(NOTES_COLLECTION)
             .document(entity.id)
             .delete()
+            .addOnFailureListener {
+                // send error reports to Firebase Crashlytics
+                cLog(it.message)
+            }
             .await()
     }
 
@@ -98,8 +120,14 @@ constructor(
                 .collection(DELETES_COLLECTION)
                 .document(USER_ID)
                 .collection(NOTES_COLLECTION)
-                .get()
-                .await().toObjects(NoteNetworkEntity::class.java)
+                .get() // get all the object
+                .addOnFailureListener {
+                    // send error reports to Firebase Crashlytics
+                    cLog(it.message)
+                }
+                .await()
+                .toObjects(NoteNetworkEntity::class.java) // tell what object we are going to retrieve
+
         )
     }
 
@@ -109,11 +137,19 @@ constructor(
             .collection(NOTES_COLLECTION)
             .document(USER_ID)
             .delete()
+            .addOnFailureListener {
+                // send error reports to Firebase Crashlytics
+                cLog(it.message)
+            }
             .await()
         firestore
             .collection(DELETES_COLLECTION)
             .document(USER_ID)
             .delete()
+            .addOnFailureListener {
+                // send error reports to Firebase Crashlytics
+                cLog(it.message)
+            }
             .await()
     }
 
@@ -124,6 +160,10 @@ constructor(
             .collection(NOTES_COLLECTION)
             .document(note.id)
             .get()
+            .addOnFailureListener {
+                // send error reports to Firebase Crashlytics
+                cLog(it.message)
+            }
             .await()
             .toObject(NoteNetworkEntity::class.java)?.let {
                 networkMapper.mapFromEntity(it)
@@ -137,6 +177,10 @@ constructor(
                 .document(USER_ID)
                 .collection(NOTES_COLLECTION)
                 .get()
+                .addOnFailureListener {
+                    // send error reports to Firebase Crashlytics
+                    cLog(it.message)
+                }
                 .await()
                 .toObjects(NoteNetworkEntity::class.java)
         )
@@ -160,7 +204,12 @@ constructor(
                 val documentRef = collectionRef.document(note.id)
                 batch.set(documentRef, entity)
             }
-        }.await()
+        }
+            .addOnFailureListener {
+                // send error reports to Firebase Crashlytics
+                cLog(it.message)
+            }
+            .await()
 
     }
 
