@@ -1,4 +1,4 @@
-package com.codingwithmitch.cleannotes.framework.datasource.network.implementation
+package com.codingwithmitch.cleannotes.framework.datasource.cache.implementaion
 
 import com.codingwithmitch.cleannotes.business.domain.model.Note
 import com.codingwithmitch.cleannotes.business.domain.util.DateUtil
@@ -30,7 +30,9 @@ constructor(
     }
 
     override suspend fun getAllNotes(): List<Note> {
-        TODO("Not yet implemented")
+        return noteMapper.entityListToNoteList(
+            noteDao.searchNotes()
+        )
     }
 
     override suspend fun searchNoteById(id: String): Note? {
@@ -55,7 +57,8 @@ constructor(
             title = newTitle,
             body = newBody,
             updated_at = dateUtil.getCurrentTimestamp()
-        )    }
+        )
+    }
 
     override suspend fun searchNotes(): List<Note> {
         return noteMapper.entityListToNoteList(

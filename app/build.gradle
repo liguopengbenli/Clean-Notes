@@ -19,7 +19,6 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 
-
 android {
     compileSdkVersion Versions.compilesdk
     defaultConfig {
@@ -100,4 +99,6 @@ dependencies {
     testImplementation TestDependencies.junit4
     testImplementation Dependencies.retrofit_gson
     testRuntimeOnly TestDependencies.jupiter_engine
+
+    // firebase
 }
