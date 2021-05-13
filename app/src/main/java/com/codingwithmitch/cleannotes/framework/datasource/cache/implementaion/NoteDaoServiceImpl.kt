@@ -4,8 +4,8 @@ import com.codingwithmitch.cleannotes.business.domain.model.Note
 import com.codingwithmitch.cleannotes.business.domain.util.DateUtil
 import com.codingwithmitch.cleannotes.framework.datasource.cache.abstraction.NoteDaoService
 
-import com.codingwithmitch.cleannotes.framework.datasource.database.NoteDao
-import com.codingwithmitch.cleannotes.framework.datasource.database.returnOrderedQuery
+import com.codingwithmitch.cleannotes.framework.datasource.cache.database.NoteDao
+import com.codingwithmitch.cleannotes.framework.datasource.cache.database.returnOrderedQuery
 import com.codingwithmitch.cleannotes.framework.datasource.util.CacheMapper
 import javax.inject.Inject
 import javax.inject.Singleton

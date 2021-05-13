@@ -15,8 +15,8 @@ import com.codingwithmitch.cleannotes.business.interactors.splash.SyncDeletedNot
 import com.codingwithmitch.cleannotes.business.interactors.splash.SyncNotes
 import com.codingwithmitch.cleannotes.framework.datasource.cache.abstraction.NoteDaoService
 import com.codingwithmitch.cleannotes.framework.datasource.cache.implementaion.NoteDaoServiceImpl
-import com.codingwithmitch.cleannotes.framework.datasource.database.NoteDao
-import com.codingwithmitch.cleannotes.framework.datasource.database.NoteDatabase
+import com.codingwithmitch.cleannotes.framework.datasource.cache.database.NoteDao
+import com.codingwithmitch.cleannotes.framework.datasource.cache.database.NoteDatabase
 import com.codingwithmitch.cleannotes.framework.datasource.network.abstraction.NoteFirestoreService
 import com.codingwithmitch.cleannotes.framework.datasource.network.implementation.NoteFirestoreServiceImpl
 import com.codingwithmitch.cleannotes.framework.datasource.network.mappers.NetworkMapper
