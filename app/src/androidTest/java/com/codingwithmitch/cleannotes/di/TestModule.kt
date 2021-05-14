@@ -29,8 +29,23 @@ object TestModule {
     @JvmStatic
     @Singleton
     @Provides
-    fun provideFirebaseFirestore(): FirebaseFirestore {
-        return FirebaseFirestore.getInstance()
+    fun provideFirestoreSettings(): FirebaseFirestoreSettings{
+        return FirebaseFirestoreSettings.Builder()
+            .setHost("10.0.2.2:8080")
+            .setSslEnabled(false)
+            .setPersistenceEnabled(false)
+            .build()
+    }
+
+    @JvmStatic
+    @Singleton
+    @Provides
+    fun provideFirebaseFirestore(
+        firestoreSettings: FirebaseFirestoreSettings
+    ): FirebaseFirestore {
+        val firestore = FirebaseFirestore.getInstance()
+        firestore.firestoreSettings = firestoreSettings
+        return firestore
     }
 
 }
