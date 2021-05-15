@@ -39,7 +39,8 @@ class DependencyContainer {
         noteFactory = NoteFactory(dateUtil)
         noteNetworkDataSource = FakeNoteNetworkDataSourceImpl(
             notesData = notesData,
-            deletedNotesData = HashMap()
+            deletedNotesData = HashMap(),
+            dateUtil = dateUtil
         )
         noteCacheDataSource = FakeNoteCacheDataSourceImpl(
             notesData = notesData,

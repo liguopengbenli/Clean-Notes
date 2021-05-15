@@ -2,14 +2,23 @@ package com.codingwithmitch.cleannotes.business.data.network
 
 import com.codingwithmitch.cleannotes.business.data.network.abstraction.NoteNetworkDataSource
 import com.codingwithmitch.cleannotes.business.domain.model.Note
+import com.codingwithmitch.cleannotes.business.domain.util.DateUtil
 
 class FakeNoteNetworkDataSourceImpl
 constructor(
     private val notesData: HashMap<String, Note>,
-    private val deletedNotesData: HashMap<String, Note>
+    private val deletedNotesData: HashMap<String, Note>,
+    private val dateUtil: DateUtil
 ) : NoteNetworkDataSource{
 
     override suspend fun insertOrUpdateNote(note: Note) {
+        val n = Note(
+            id = note.id,
+            title = note.title,
+            body = note.body,
+            created_at = note.created_at,
+            updated_at = dateUtil.getCurrentTimestamp()
+        )
         notesData.put(note.id, note)
     }
 

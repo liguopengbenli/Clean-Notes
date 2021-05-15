@@ -51,13 +51,23 @@ constructor(
         return noteDao.deleteNotes(ids)
     }
 
-    override suspend fun updateNote(primary: String, newTitle: String, newBody: String): Int {
-        return noteDao.updateNote(
-            primaryKey = primary,
-            title = newTitle,
-            body = newBody,
-            updated_at = dateUtil.getCurrentTimestamp()
-        )
+    override suspend fun updateNote(primary: String, newTitle: String, newBody: String, timeStamp: String?): Int {
+        return if(timeStamp != null){
+            noteDao.updateNote(
+                primaryKey = primary,
+                title = newTitle,
+                body = newBody,
+                updated_at = timeStamp
+            )
+        }
+        else{
+            noteDao.updateNote(
+                primaryKey = primary,
+                title = newTitle,
+                body = newBody,
+                updated_at = dateUtil.getCurrentTimestamp()
+            )
+        }
     }
 
     override suspend fun searchNotes(): List<Note> {
