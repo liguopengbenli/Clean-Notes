@@ -27,8 +27,7 @@ class InsertNewNote(
     ): Flow<DataState<NoteListViewState>?> = flow {
         val newNote = noteFactory.createSingleNote(
             id = id?: UUID.randomUUID().toString(),
-            title = title,
-            body = ""
+            title = title
         )
         val cacheResult = safeCacheCall(IO){
             noteCacheDataSource.insertNote(newNote)

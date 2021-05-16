@@ -23,7 +23,7 @@ object TestModule {
     @Provides
     fun provideNoteDb(app: TestBaseApplication): NoteDatabase {
         return Room
-            .inMemoryDatabaseBuilder(app, NoteDatabase::class.java)
+            .inMemoryDatabaseBuilder(app, NoteDatabase::class.java) // fake tempo db
             .fallbackToDestructiveMigration()
             .build()
     }
