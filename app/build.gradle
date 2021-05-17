@@ -1,15 +1,3 @@
-import AnnotationProcessing
-import Application
-import Versions
-import Java
-import Build
-import Repositories
-
-import dependencies.SupportDependencies
-import dependencies.AndroidTestDependencies
-import dependencies.Dependencies
-import dependencies.TestDependencies
-
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
@@ -25,15 +13,15 @@ apply plugin: 'com.google.gms.google-services' // Google Services Gradle plugin
 
 
 android {
-    compileSdkVersion Versions.compilesdk
+    compileSdkVersion 29
     defaultConfig {
-        applicationId Application.id
-        minSdkVersion Versions.minsdk
-        targetSdkVersion Versions.targetsdk
-        versionCode Application.version_code
-        versionName Application.version_name
+        applicationId "com.codingwithmitch.cleannotes"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
 
-        testInstrumentationRunner AndroidTestDependencies.instrumentation_runner
+        testInstrumentationRunner "com.codingwithmitch.cleannotes.framework.MockTestRunner"
     }
     buildTypes {
         debug {
@@ -52,7 +40,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = Java.java_version
+        jvmTarget = "1.8"
     }
 
     sourceSets{
@@ -69,55 +57,54 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation Dependencies.kotlin_standard_library
-    implementation Dependencies.kotlin_reflect
-    implementation Dependencies.ktx
-    implementation Dependencies.navigation_runtime
-    implementation Dependencies.navigation_ui
-    implementation Dependencies.navigation_fragment
-    implementation Dependencies.navigation_dynamic
-    implementation Dependencies.material_dialogs
-    implementation Dependencies.material_dialogs_input
-    implementation Dependencies.play_core
-    implementation Dependencies.leak_canary
-    implementation Dependencies.dagger
-    implementation Dependencies.room_runtime
-    implementation Dependencies.room_ktx
-    implementation Dependencies.markdown_processor
-    implementation Dependencies.retrofit
-    implementation Dependencies.retrofit_gson
-    implementation Dependencies.firebase_firestore
-    implementation Dependencies.firebase_auth
-    implementation Dependencies.kotlin_coroutines_play_services
-    implementation Dependencies.firebase_analytics
-    implementation Dependencies.firebase_crashlytics
-    implementation AndroidTestDependencies.idling_resource
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.61"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.3.61"
+    implementation "androidx.core:core-ktx:1.2.0"
+    implementation "androidx.navigation:navigation-runtime:2.3.0-alpha06"
+    implementation "androidx.navigation:navigation-ui-ktx:2.3.0-alpha06"
+    implementation "androidx.navigation:navigation-fragment-ktx:2.3.0-alpha06"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:2.3.0-alpha06"
+    implementation "com.afollestad.material-dialogs:core:3.2.1"
+    implementation "com.afollestad.material-dialogs:input:3.2.1"
+    implementation "com.google.android.play:core:1.7.1"
+    implementation "com.squareup.leakcanary:leakcanary-android:2.0-alpha-3"
+    implementation "com.google.dagger:dagger:2.25.4"
+    implementation "androidx.room:room-runtime:2.1.0"
+    implementation "androidx.room:room-ktx:2.1.0"
+    implementation "com.yydcdut:markdown-processor:0.1.3"
+    implementation "com.squareup.retrofit2:retrofit:2.6.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.6.0"
+    implementation "com.google.firebase:firebase-firestore-ktx:21.4.2"
+    implementation "com.google.firebase:firebase-auth:19.3.0"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.3.2"
+    implementation "com.google.firebase:firebase-analytics-ktx:17.4.1"
+    implementation "com.google.firebase:firebase-crashlytics:17.0.0"
+    implementation "androidx.test.espresso:espresso-idling-resource:3.2.0"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha03"
+    implementation "androidx.appcompat:appcompat:1.1.0-rc01"
+    implementation "androidx.constraintlayout:constraintlayout:1.1.3"
+    implementation "com.google.android.material:material:1.1.0"
 
-    implementation SupportDependencies.swipe_refresh_layout
-    implementation SupportDependencies.appcompat
-    implementation SupportDependencies.constraintlayout
-    implementation SupportDependencies.material_design
+    kapt "androidx.room:room-compiler:2.1.0"
+    kapt "com.google.dagger:dagger-compiler:2.25.4"
 
-    kapt AnnotationProcessing.room_compiler
-    kapt AnnotationProcessing.dagger_compiler
+    testImplementation "io.mockk:mockk:1.9.2"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.6.0"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:5.6.0"
+    testImplementation "junit:junit:4.12"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.6.0"
 
-    testImplementation TestDependencies.mockk
-    testImplementation TestDependencies.jupiter_api
-    testImplementation TestDependencies.jupiter_params
-    testImplementation TestDependencies.junit4
-    testRuntimeOnly TestDependencies.jupiter_engine
-
-    androidTestImplementation AndroidTestDependencies.kotlin_test
-    androidTestImplementation AndroidTestDependencies.coroutines_test
-    androidTestImplementation AndroidTestDependencies.espresso_core
-    androidTestImplementation AndroidTestDependencies.espresso_contrib
-    androidTestImplementation AndroidTestDependencies.idling_resource
-    androidTestImplementation AndroidTestDependencies.mockk_android
-    androidTestImplementation AndroidTestDependencies.test_runner
-    androidTestImplementation AndroidTestDependencies.test_rules
-    androidTestImplementation AndroidTestDependencies.text_core_ktx
-    androidTestImplementation AndroidTestDependencies.navigation_testing
-    debugImplementation AndroidTestDependencies.fragment_testing
-    kaptAndroidTest  AnnotationProcessing.dagger_compiler
+    androidTestImplementation "org.jetbrains.kotlin:kotlin-test-junit:1.3.61"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.0"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.1.1"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:3.1.1"
+    androidTestImplementation "androidx.test.espresso:espresso-idling-resource:3.2.0"
+    androidTestImplementation "io.mockk:mockk-android:1.9.2"
+    androidTestImplementation "androidx.test:runner:1.2.0"
+    androidTestImplementation "androidx.test:rules:1.2.0"
+    androidTestImplementation "androidx.test:core-ktx:1.2.0"
+    androidTestImplementation "androidx.navigation:navigation-testing:2.3.0-alpha06"
+    debugImplementation "androidx.fragment:fragment-testing:1.2.0"
+    kaptAndroidTest  "com.google.dagger:dagger-compiler:2.25.4"
 
 }
