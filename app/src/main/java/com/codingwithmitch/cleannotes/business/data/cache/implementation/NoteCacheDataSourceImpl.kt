@@ -17,16 +17,16 @@ constructor(
         return noteDaoService.insertNote(note)
     }
 
-    override suspend fun deleteNote(primaryKey: String): Int {
-        return noteDaoService.deleteNote(primaryKey)
+    override suspend fun deleteNote(primary: String): Int {
+        return noteDaoService.deleteNote(primary)
     }
 
     override suspend fun deleteNotes(notes: List<Note>): Int {
         return noteDaoService.deleteNotes(notes)
     }
 
-    override suspend fun updateNote(primaryKey: String, newTitle: String, newBody: String, timestamp: String?): Int {
-        return noteDaoService.updateNote(primaryKey, newTitle, newBody, timestamp)
+    override suspend fun updateNote(primary: String, newTitle: String, newBody: String, timestamp: String?): Int {
+        return noteDaoService.updateNote(primary, newTitle, newBody, timestamp)
     }
 
     override suspend fun searchNotes(
@@ -39,8 +39,8 @@ constructor(
         )
     }
 
-    override suspend fun searchNoteById(id: String): Note? {
-        return noteDaoService.searchNoteById(id)
+    override suspend fun searchNoteById(primaryKey: String): Note? {
+        return noteDaoService.searchNoteById(primaryKey)
     }
 
     override suspend fun getNumNotes(): Int {

@@ -6,6 +6,8 @@ import com.codingwithmitch.cleannotes.framework.presentation.BaseApplication
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
 import dagger.Provides
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import javax.inject.Singleton
 
 
@@ -14,6 +16,8 @@ import javax.inject.Singleton
     androidTest dir
  */
 
+@ExperimentalCoroutinesApi
+@FlowPreview
 @Module
 object ProductionModule {
 

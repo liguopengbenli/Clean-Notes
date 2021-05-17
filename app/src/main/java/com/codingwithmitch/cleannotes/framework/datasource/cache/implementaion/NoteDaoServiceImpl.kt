@@ -35,29 +35,29 @@ constructor(
         )
     }
 
-    override suspend fun searchNoteById(id: String): Note? {
-        return noteDao.searchNoteById(id)?.let { note ->
+    override suspend fun searchNoteById(primaryKey: String): Note? {
+        return noteDao.searchNoteById(primaryKey)?.let { note ->
             noteMapper.mapFromEntity(note)
         }
     }
 
 
-    override suspend fun deleteNote(primaryKey: String): Int {
-        return noteDao.deleteNote(primaryKey)
+    override suspend fun deleteNote(primary: String): Int {
+        return noteDao.deleteNote(primary)
     }
 
     override suspend fun deleteNotes(notes: List<Note>): Int {
-        val ids = notes.mapIndexed {index, value -> value.id}
+        val ids = notes.mapIndexed {_, value -> value.id}
         return noteDao.deleteNotes(ids)
     }
 
-    override suspend fun updateNote(primary: String, newTitle: String, newBody: String, timeStamp: String?): Int {
-        return if(timeStamp != null){
+    override suspend fun updateNote(primary: String, newTitle: String, newBody: String, timestamp: String?): Int {
+        return if(timestamp != null){
             noteDao.updateNote(
                 primaryKey = primary,
                 title = newTitle,
                 body = newBody,
-                updated_at = timeStamp
+                updated_at = timestamp
             )
         }
         else{

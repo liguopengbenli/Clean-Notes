@@ -5,8 +5,12 @@ import android.os.Bundle
 import com.codingwithmitch.cleannotes.R
 import com.codingwithmitch.cleannotes.util.printLogD
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import javax.inject.Inject
 
+@ExperimentalCoroutinesApi
+@FlowPreview
 class MainActivity : AppCompatActivity()
 {
 

@@ -6,7 +6,7 @@ import com.codingwithmitch.cleannotes.framework.datasource.cache.database.NOTE_P
 interface NoteDaoService {
     suspend fun insertNote(note: Note): Long
     suspend fun deleteNote(primary: String): Int
-    suspend fun deleteNotes(note: List<Note>): Int
+    suspend fun deleteNotes(notes: List<Note>): Int
     suspend fun updateNote(primary: String, newTitle: String, newBody: String, timestamp: String?): Int
     suspend fun searchNotes(): List<Note>
     suspend fun searchNoteById(primaryKey: String): Note?

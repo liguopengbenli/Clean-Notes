@@ -24,7 +24,7 @@ constructor(
     }
 
     fun convertStringDateToFirebaseTimestamp(date: String): Timestamp{
-        return Timestamp(dateFormat.parse(date))
+        return Timestamp(dateFormat.parse(date)!!)
     }
 
     fun getCurrentTimestamp(): String{
