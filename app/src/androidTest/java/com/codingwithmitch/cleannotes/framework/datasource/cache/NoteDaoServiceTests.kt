@@ -10,6 +10,8 @@ import com.codingwithmitch.cleannotes.framework.datasource.cache.database.NoteDa
 import com.codingwithmitch.cleannotes.framework.datasource.cache.implementaion.NoteDaoServiceImpl
 import com.codingwithmitch.cleannotes.framework.datasource.data.NoteDataFactory
 import com.codingwithmitch.cleannotes.framework.datasource.util.CacheMapper
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -39,7 +41,8 @@ import kotlin.test.assertTrue
     12. search notes, order by title (DESC), confirm order
  */
 
-
+@FlowPreview
+@ExperimentalCoroutinesApi
 class NoteDaoServiceTests: BaseTest() {
 
     // system in test

@@ -6,8 +6,12 @@ import com.codingwithmitch.cleannotes.framework.presentation.TempTest
 import com.codingwithmitch.cleannotes.framework.presentation.TestBaseApplication
 import dagger.BindsInstance
 import dagger.Component
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
 import javax.inject.Singleton
 
+@FlowPreview
+@ExperimentalCoroutinesApi
 @Singleton
 @Component(
     modules = [
