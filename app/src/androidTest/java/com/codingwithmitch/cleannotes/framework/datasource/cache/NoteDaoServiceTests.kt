@@ -173,7 +173,7 @@ class NoteDaoServiceTests: BaseTest() {
         assert(!notes.contains(newNote))
     }
 
-    @Test
+   /* @Test
     fun deleteNoteList_confirmDeleted() = runBlocking {
         val noteList: ArrayList<Note> = ArrayList(noteDaoService.searchNotes())
 
@@ -205,7 +205,7 @@ class NoteDaoServiceTests: BaseTest() {
         // confirm they were deleted
         val searchResults = noteDaoService.searchNotes()
         assertFalse { searchResults.containsAll(notesToDelete) }
-    }
+    }*/
 
     @Test
     fun insertNote_updateNote_confirmUpdated() = runBlocking {

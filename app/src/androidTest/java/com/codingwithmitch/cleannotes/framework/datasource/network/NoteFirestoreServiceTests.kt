@@ -44,7 +44,8 @@ Test cases:
 7. delete a 'deleted note' (note from "deletes" node). CBS
  */
 
-
+@FlowPreview
+@ExperimentalCoroutinesApi
 @RunWith(AndroidJUnit4ClassRunner::class)
 class NoteFirestoreServiceTests: BaseTest(){
 
