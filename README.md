@@ -10,17 +10,14 @@ In the future I will make another course on Dynamic Feature Modules.
 
 ![logo](https://codingwithmitch.s3.amazonaws.com/static/courses/21/clean_architecture_diagrams.png)
 
-# Running this app
 
 To run this app you will need to create a firebase project and hook it up with the project. I password protected the login of mine so you won't be able to get into the app.
 
-# Running the Tests
 1. cd into /tests/
 2. type in terminal: `run_tests.sh`
 This will run all the unit tests and instrumentation tests. It will also start the firebase emulator to simulate firestore db.
 **The test results** are in `/app/build/reports/`.
 
-# Credits
 1. https://proandroiddev.com/gradle-dependency-management-with-kotlin-94eed4df9a28
 2. https://proandroiddev.com/intro-to-app-modularization-42411e4c421e
 3. https://www.droidcon.com/media-detail?video=380845032
