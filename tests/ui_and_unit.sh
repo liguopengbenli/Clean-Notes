@@ -19,8 +19,12 @@ print_blue "\n\nrun unit tests...\n"
 ./gradlew test
 print_green "\n\n unit tests complete"
 
+
+print_blue "\n\n\nStarting Firestore Local Emulator...\n"
+#firebase emulators:start --only firestore
+
 print_blue "\n\nrun android tests...\n"
-./gradlew connectedAndroidTest
+./gradlew connectedAndroidTest --stacktrace
 print_green "\n\n android tests complete"
 
 print_yellow "\n\nAll tests complete..."
