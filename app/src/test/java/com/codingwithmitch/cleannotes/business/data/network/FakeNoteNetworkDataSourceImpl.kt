@@ -19,7 +19,7 @@ constructor(
             created_at = note.created_at,
             updated_at = dateUtil.getCurrentTimestamp()
         )
-        notesData.put(note.id, note)
+        notesData.put(note.id, n)
     }
 
     override suspend fun deleteNote(primaryKey: String) {

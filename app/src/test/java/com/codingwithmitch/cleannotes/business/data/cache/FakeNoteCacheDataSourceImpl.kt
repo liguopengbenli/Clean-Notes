@@ -31,13 +31,13 @@ constructor(
         return 1 // success
     }
 
-    override suspend fun deleteNote(primaryKey: String): Int {
-        if (primaryKey.equals(FORCE_DELETE_NOTE_EXCEPTION)) {
+    override suspend fun deleteNote(primary: String): Int {
+        if (primary.equals(FORCE_DELETE_NOTE_EXCEPTION)) {
             throw Exception("Something went wrong deleting the note.")
-        } else if (primaryKey.equals(FORCE_DELETES_NOTE_EXCEPTION)) {
+        } else if (primary.equals(FORCE_DELETES_NOTE_EXCEPTION)) {
             throw Exception("Something went wrong deleting the note.")
         }
-        return notesData.remove(primaryKey)?.let {
+        return notesData.remove(primary)?.let {
             1 // return 1 for success
         } ?: -1 // -1 for failure
     }
@@ -52,19 +52,19 @@ constructor(
         return failOrSuccess
     }
 
-    override suspend fun updateNote(primaryKey: String, newTitle: String, newBody: String, timestamp: String?): Int {
-        if (primaryKey.equals(FORCE_UPDATE_NOTE_EXCEPTION)) {
+    override suspend fun updateNote(primary: String, newTitle: String, newBody: String, timestamp: String?): Int {
+        if (primary.equals(FORCE_UPDATE_NOTE_EXCEPTION)) {
             throw Exception("Something went wrong updating the note.")
         }
         val updatedNote = Note(
-            id = primaryKey,
+            id = primary,
             title = newTitle,
-            body = newBody ?: "",
+            body = newBody,
             updated_at = timestamp?: dateUtil.getCurrentTimestamp(),
-            created_at = notesData.get(primaryKey)?.created_at ?: dateUtil.getCurrentTimestamp()
+            created_at = notesData.get(primary)?.created_at ?: dateUtil.getCurrentTimestamp()
         )
-        return notesData.get(primaryKey)?.let {
-            notesData.put(primaryKey, updatedNote)
+        return notesData.get(primary)?.let {
+            notesData.put(primary, updatedNote)
             1 // success
         } ?: -1 // nothing to update
     }
@@ -94,8 +94,8 @@ constructor(
         return results
     }
 
-    override suspend fun searchNoteById(id: String): Note? {
-        return notesData.get(id)
+    override suspend fun searchNoteById(primaryKey: String): Note? {
+        return notesData.get(primaryKey)
     }
 
     override suspend fun getNumNotes(): Int {
