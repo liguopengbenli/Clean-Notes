@@ -65,7 +65,6 @@ constructor(
         viewModelFactory
     }
 
-    lateinit var uiController: UIController
     private var listAdapter: NoteListAdapter? = null
     private var itemTouchHelper: ItemTouchHelper? = null
 
@@ -358,12 +357,12 @@ constructor(
     }
 
     private fun navigateToDetailFragment(selectedNote: Note){
-//        val bundle = bundleOf(NOTE_DETAIL_SELECTED_NOTE_BUNDLE_KEY to selectedNote)
-//        findNavController().navigate(
-//            R.id.action_note_list_fragment_to_noteDetailFragment,
-//            bundle
-//        )
-//        viewModel.setNote(null)
+        val bundle = bundleOf(NOTE_DETAIL_SELECTED_NOTE_BUNDLE_KEY to selectedNote)
+        findNavController().navigate(
+            R.id.action_note_list_fragment_to_noteDetailFragment,
+            bundle
+        )
+        viewModel.setNote(null)
     }
 
     private fun setupUI(){
@@ -443,9 +442,7 @@ constructor(
     }
 
     override fun inject() {
-        activity?.run {
-            (application as BaseApplication).appComponent
-        }?: throw Exception("AppComponent is null.")
+
     }
 
     override fun onResume() {

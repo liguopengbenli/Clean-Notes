@@ -30,7 +30,5 @@ interface AppComponent{
 
     fun inject(maintActivity: MainActivity)
 
-    fun inject(noteListFragment: NoteListFragment)
 
-    fun inject(noteDetailFragment: NoteDetailFragment)
 }
