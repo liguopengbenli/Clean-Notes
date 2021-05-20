@@ -16,7 +16,8 @@ import kotlin.collections.HashMap
 class DependencyContainer {
 
     private val dateFormat = SimpleDateFormat("yyyy-MM-dd hh:mm:ss a", Locale.ENGLISH)
-    val dateUtil = DateUtil(dateFormat)
+    val dateUtil =
+        DateUtil(dateFormat)
     lateinit var noteNetworkDataSource: NoteNetworkDataSource
     lateinit var noteCacheDataSource: NoteCacheDataSource
     lateinit var noteFactory: NoteFactory
@@ -25,25 +26,23 @@ class DependencyContainer {
     init {
         isUnitTest = true // for Logger.kt
     }
-    private var notesData: HashMap<String, Note> = HashMap()
-
 
     fun build() {
         this.javaClass.classLoader?.let { classLoader ->
             noteDataFactory = NoteDataFactory(classLoader)
-            notesData = noteDataFactory.produceHashMapOfNotes(
-                noteDataFactory.produceListOfNotes()
-            )
         }
-
         noteFactory = NoteFactory(dateUtil)
         noteNetworkDataSource = FakeNoteNetworkDataSourceImpl(
-            notesData = notesData,
+            notesData = noteDataFactory.produceHashMapOfNotes(
+                noteDataFactory.produceListOfNotes()
+            ),
             deletedNotesData = HashMap(),
             dateUtil = dateUtil
         )
         noteCacheDataSource = FakeNoteCacheDataSourceImpl(
-            notesData = notesData,
+            notesData = noteDataFactory.produceHashMapOfNotes(
+                noteDataFactory.produceListOfNotes()
+            ),
             dateUtil = dateUtil
         )
     }

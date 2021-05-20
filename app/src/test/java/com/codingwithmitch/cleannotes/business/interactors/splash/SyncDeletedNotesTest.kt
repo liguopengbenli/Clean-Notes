@@ -44,6 +44,7 @@ class SyncDeletedNotesTest {
         )
     }
 
+
     @Test
     fun deleteNetworkNotes_confirmCacheSync() = runBlocking {
 
@@ -52,7 +53,8 @@ class SyncDeletedNotesTest {
         val notesToDelete: ArrayList<Note> = ArrayList()
         for(note in networkNotes){
             notesToDelete.add(note)
-            noteNetworkDataSource.deleteNote(note.id)
+            noteNetworkDataSource.deleteNote(note.id) // delete from notes node
+            noteNetworkDataSource.insertDeletedNote(note) // insert into deletes node
             if(notesToDelete.size > 3){
                 break
             }

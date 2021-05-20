@@ -21,6 +21,7 @@ import com.codingwithmitch.cleannotes.framework.datasource.network.abstraction.N
 import com.codingwithmitch.cleannotes.framework.datasource.network.implementation.NoteFirestoreServiceImpl
 import com.codingwithmitch.cleannotes.framework.datasource.network.mappers.NetworkMapper
 import com.codingwithmitch.cleannotes.framework.datasource.util.CacheMapper
+import com.codingwithmitch.cleannotes.framework.presentation.splash.NoteNetworkSyncManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import dagger.Module
@@ -204,6 +205,17 @@ object AppModule {
             DeleteMultipleNotes(noteCacheDataSource, noteNetworkDataSource)
         )
     }
+
+    @JvmStatic
+    @Singleton
+    @Provides
+    fun provideNoteNetworkSyncManager(
+        syncNotes: SyncNotes,
+        syncDeleteNotes: SyncDeletedNotes
+    ): NoteNetworkSyncManager{
+        return NoteNetworkSyncManager(syncNotes, syncDeleteNotes)
+    }
+
 
 
 

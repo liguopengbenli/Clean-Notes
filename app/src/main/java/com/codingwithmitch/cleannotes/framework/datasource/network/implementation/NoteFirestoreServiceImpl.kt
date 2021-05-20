@@ -218,7 +218,7 @@ constructor(
         const val USERS_COLLECTION = "users"
         const val DELETES_COLLECTION = "deletes"
         const val USER_ID = "ssb82l1RsoTxy6sy9Mfwuc9mHql2 " // hardcoded for single user
-        const val EMAIL = "liguopengbenli@gmail.com"
+        const val EMAIL = "1042332611@qq.com"
     }
 
 
