@@ -36,7 +36,9 @@ import com.codingwithmitch.cleannotes.framework.presentation.UIController
 import com.codingwithmitch.cleannotes.framework.presentation.common.BaseNoteFragment
 import com.codingwithmitch.cleannotes.framework.presentation.common.hideKeyboard
 import com.codingwithmitch.cleannotes.framework.presentation.notedetail.NOTE_DETAIL_SELECTED_NOTE_BUNDLE_KEY
+import com.codingwithmitch.cleannotes.framework.presentation.notelist.state.NoteListStateEvent
 import com.codingwithmitch.cleannotes.framework.presentation.notelist.state.NoteListStateEvent.*
+import com.codingwithmitch.cleannotes.framework.presentation.notelist.state.NoteListToolbarState
 import com.codingwithmitch.cleannotes.framework.presentation.notelist.state.NoteListToolbarState.*
 import com.codingwithmitch.cleannotes.framework.presentation.notelist.state.NoteListViewState
 import com.codingwithmitch.cleannotes.util.TodoCallback
@@ -356,12 +358,12 @@ constructor(
     }
 
     private fun navigateToDetailFragment(selectedNote: Note){
-        val bundle = bundleOf(NOTE_DETAIL_SELECTED_NOTE_BUNDLE_KEY to selectedNote)
-        findNavController().navigate(
-            R.id.action_note_list_fragment_to_noteDetailFragment,
-            bundle
-        )
-        viewModel.setNote(null)
+//        val bundle = bundleOf(NOTE_DETAIL_SELECTED_NOTE_BUNDLE_KEY to selectedNote)
+//        findNavController().navigate(
+//            R.id.action_note_list_fragment_to_noteDetailFragment,
+//            bundle
+//        )
+//        viewModel.setNote(null)
     }
 
     private fun setupUI(){
@@ -550,7 +552,6 @@ constructor(
 
     }
 }
-
 
 
 
