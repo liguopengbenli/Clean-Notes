@@ -104,3 +104,58 @@ WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS N
 [debug] [2021-05-19T13:27:45.456Z] May 19, 2021 3:27:45 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt
 WARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE
  {"metadata":{"emulator":{"name":"firestore"},"message":"May 19, 2021 3:27:45 PM com.google.cloud.datastore.emulator.impl.context.EmulatorAuthorization warnAboutSecuredJwt\nWARNING: expected an unsecured JWT, the emulator does not validate JWTs and IS NOT SECURE\n"}}
+[debug] [2021-05-19T14:16:32.723Z] Received signal SIGHUP 1
+[info]  
+[info] i  emulators: Received SIGHUP for the first time. Starting a clean shutdown. 
+[info] i  emulators: Please wait for a clean shutdown or send the SIGHUP signal again to stop right now. 
+[debug] [2021-05-19T14:16:32.725Z] Error: write EIO
+    at afterWriteDispatched (internal/stream_base_commons.js:156:25)
+    at writeGeneric (internal/stream_base_commons.js:147:3)
+    at WriteStream.Socket._writeGeneric (net.js:785:11)
+    at WriteStream.Socket._write (net.js:797:8)
+    at writeOrBuffer (internal/streams/writable.js:358:12)
+    at WriteStream.Writable.write (internal/streams/writable.js:303:10)
+    at Console.log (/home/lig/.nvm/versions/node/v14.17.0/lib/node_modules/firebase-tools/node_modules/winston/lib/winston/transports/console.js:79:23)
+    at Console._write (/home/lig/.nvm/versions/node/v14.17.0/lib/node_modules/firebase-tools/node_modules/winston-transport/index.js:103:17)
+    at doWrite (/home/lig/.nvm/versions/node/v14.17.0/lib/node_modules/firebase-tools/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:428:64)
+    at writeOrBuffer (/home/lig/.nvm/versions/node/v14.17.0/lib/node_modules/firebase-tools/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:417:5)
+    at Console.Writable.write (/home/lig/.nvm/versions/node/v14.17.0/lib/node_modules/firebase-tools/node_modules/winston-transport/node_modules/readable-stream/lib/_stream_writable.js:334:11)
+    at DerivedLogger.ondata (/home/lig/.nvm/versions/node/v14.17.0/lib/node_modules/firebase-tools/node_modules/readable-stream/lib/_stream_readable.js:681:20)
+    at DerivedLogger.emit (events.js:388:22)
+    at DerivedLogger.emit (domain.js:470:12)
+    at addChunk (/home/lig/.nvm/versions/node/v14.17.0/lib/node_modules/firebase-tools/node_modules/readable-stream/lib/_stream_readable.js:298:12)
+    at readableAddChunk (/home/lig/.nvm/versions/node/v14.17.0/lib/node_modules/firebase-tools/node_modules/readable-stream/lib/_stream_readable.js:280:11)
+[error] 
+[error] Error: An unexpected error has occurred.
+[info] i  emulators: Shutting down emulators. {"metadata":{"emulator":{"name":"hub"},"message":"Shutting down emulators."}}
+[info] i  ui: Stopping Emulator UI {"metadata":{"emulator":{"name":"ui"},"message":"Stopping Emulator UI"}}
+[debug] [2021-05-19T14:16:32.728Z] node[10752]: ../src/node.cc:742:void node::ResetStdio(): Assertion `!(err != 0) || (err == -1 && (*__errno_location ()) == 1)' failed.
+ {"metadata":{"emulator":{"name":"ui"},"message":"node[10752]: ../src/node.cc:742:void node::ResetStdio(): Assertion `!(err != 0) || (err == -1 && (*__errno_location ()) == 1)' failed.\n"}}
+[debug] [2021-05-19T14:16:32.728Z] Ignoring signal SIGHUP due to short delay of 5ms
+[debug] [2021-05-19T14:16:32.733Z]  1: 0xa222f0 node::Abort() [node]
+ {"metadata":{"emulator":{"name":"ui"},"message":" 1: 0xa222f0 node::Abort() [node]\n"}}
+[debug] [2021-05-19T14:16:32.734Z]  2: 0xa2236e  [node]
+ {"metadata":{"emulator":{"name":"ui"},"message":" 2: 0xa2236e  [node]\n"}}
+[debug] [2021-05-19T14:16:32.734Z]  3: 0x9ecde4 node::ResetStdio() [node]
+ {"metadata":{"emulator":{"name":"ui"},"message":" 3: 0x9ecde4 node::ResetStdio() [node]\n"}}
+[debug] [2021-05-19T14:16:32.735Z]  4: 0x9ecea0 node::SignalExit(int, siginfo_t*, void*) [node]
+ 5: 0x7fda67cf2980  [/lib/x86_64-linux-gnu/libpthread.so.0]
+ 6: 0x7fda67a10a47 epoll_wait [/lib/x86_64-linux-gnu/libc.so.6]
+ {"metadata":{"emulator":{"name":"ui"},"message":" 4: 0x9ecea0 node::SignalExit(int, siginfo_t*, void*) [node]\n 5: 0x7fda67cf2980  [/lib/x86_64-linux-gnu/libpthread.so.0]\n 6: 0x7fda67a10a47 epoll_wait [/lib/x86_64-linux-gnu/libc.so.6]\n"}}
+[debug] [2021-05-19T14:16:32.735Z]  7: 0x13b0444  [node]
+ {"metadata":{"emulator":{"name":"ui"},"message":" 7: 0x13b0444  [node]\n"}}
+[debug] [2021-05-19T14:16:32.736Z]  8: 0x139dc38 uv_run [node]
+ {"metadata":{"emulator":{"name":"ui"},"message":" 8: 0x139dc38 uv_run [node]\n"}}
+[debug] [2021-05-19T14:16:32.737Z]  9: 0xa625f4 node::NodeMainInstance::Run() [node]
+ {"metadata":{"emulator":{"name":"ui"},"message":" 9: 0xa625f4 node::NodeMainInstance::Run() [node]\n"}}
+[debug] [2021-05-19T14:16:32.737Z] 10: 0x9f0ba5 node::Start(int, char**) [node]
+11: 0x7fda67910bf7 __libc_start_main [/lib/x86_64-linux-gnu/libc.so.6]
+ {"metadata":{"emulator":{"name":"ui"},"message":"10: 0x9f0ba5 node::Start(int, char**) [node]\n11: 0x7fda67910bf7 __libc_start_main [/lib/x86_64-linux-gnu/libc.so.6]\n"}}
+[debug] [2021-05-19T14:16:32.738Z] 12: 0x98080c  [node]
+ {"metadata":{"emulator":{"name":"ui"},"message":"12: 0x98080c  [node]\n"}}
+[warn] ⚠  Emulator UI has exited upon receiving signal: SIGABRT 
+[info] i  firestore: Stopping Firestore Emulator {"metadata":{"emulator":{"name":"firestore"},"message":"Stopping Firestore Emulator"}}
+[debug] [2021-05-19T14:16:32.741Z] *** shutting down gRPC server since JVM is shutting down
+ {"metadata":{"emulator":{"name":"firestore"},"message":"*** shutting down gRPC server since JVM is shutting down\n"}}
+[debug] [2021-05-19T14:16:32.751Z] *** server shut down
+ {"metadata":{"emulator":{"name":"firestore"},"message":"*** server shut down\n"}}
